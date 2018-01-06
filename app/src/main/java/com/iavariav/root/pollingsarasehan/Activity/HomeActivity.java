@@ -129,6 +129,13 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
             }
         });
 
+        cvSuara.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SurveyActivity.class));
+            }
+        });
+
 
         fbSukses.setOnClickListener(new View.OnClickListener() {
             @Override

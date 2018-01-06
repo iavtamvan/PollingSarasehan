@@ -90,7 +90,8 @@
                             android:layout_width="100sp"
                             android:layout_height="100sp"
                             android:layout_marginLeft="8sp"
-                            android:id="@+id/ciPoling"/>
+                            android:id="@+id/ciPoling"
+                            android:src="@drawable/polingcek"/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -138,7 +139,8 @@
                             android:layout_width="100sp"
                             android:layout_height="100sp"
                             android:layout_marginLeft="8sp"
-                            android:id="@+id/ciCekSuara"/>
+                            android:id="@+id/ciCekSuara"
+                            android:src="@drawable/suara"/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"

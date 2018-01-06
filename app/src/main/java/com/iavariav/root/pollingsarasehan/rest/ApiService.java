@@ -1,6 +1,7 @@
 package com.iavariav.root.pollingsarasehan.rest;
 
 import com.iavariav.root.pollingsarasehan.Model.KategoriDosenModel;
+import com.iavariav.root.pollingsarasehan.Model.SurveyModel;
 import com.iavariav.root.pollingsarasehan.Model.UserModel;
 
 import java.util.ArrayList;
@@ -21,6 +22,8 @@ public interface ApiService {
     Call<ArrayList<UserModel>> getUser();
     @GET("kategoridosenget.php")
     Call<ArrayList<KategoriDosenModel>> getDataKategoriDosen();
+    @GET("surveycoba.php")
+    Call<ArrayList<SurveyModel>> getDataSurveyDosen();
 
     @FormUrlEncoded
     @POST("polingdosen.php")
@@ -34,4 +37,6 @@ public interface ApiService {
     Call<ResponseBody> postLogin  (@Field("npm") String emaillogin,
                                    @Field("nama") String passwordLogin,
                                    @Field("hwid") String hwid);
+
+
 }
