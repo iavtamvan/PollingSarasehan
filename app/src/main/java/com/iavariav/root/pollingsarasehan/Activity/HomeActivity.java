@@ -93,7 +93,8 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
 
         HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
         file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
-        file_maps.put("Semicolon Developer", R.drawable.semicolon);
+        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
+        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
@@ -140,7 +141,7 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
         fbSukses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Logged", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Log Out", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Config.forceLogoutternak(HomeActivity.this);
 //                isInternetOn();

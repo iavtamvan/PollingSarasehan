@@ -5,9 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -37,7 +39,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PolingActivity extends AppCompatActivity{
+public class PolingActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
 
     private Toolbar toolbar;
     private RadioGroup rgDosen;
@@ -72,6 +74,7 @@ public class PolingActivity extends AppCompatActivity{
 
     private ArrayList<KategoriDosenModel> kategoriDosenModels;
     private ArrayList<UserModel> userModels;
+    private SwipeRefreshLayout sr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +85,7 @@ public class PolingActivity extends AppCompatActivity{
         sp = getSharedPreferences(Config.SHARED_TITTLE, Context.MODE_PRIVATE);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
+        sr.setOnRefreshListener(this);
 
         NPM = bundle.getString("npm");
 //        Toast.makeText(this, "Npm Bundle : " + NPM, Toast.LENGTH_SHORT).show();
@@ -119,8 +123,8 @@ public class PolingActivity extends AppCompatActivity{
     }
 
     private void getdata(boolean rm) {
-        if (rm){
-            if (divContainer.getChildCount()>0) divContainer.removeAllViews();
+        if (rm) {
+            if (divContainer.getChildCount() > 0) divContainer.removeAllViews();
         }
 
         loading = ProgressDialog.show(PolingActivity.this, "", "Mengambil Data...", false, false);
@@ -130,11 +134,11 @@ public class PolingActivity extends AppCompatActivity{
             @Override
             public void onResponse(Call<ArrayList<KategoriDosenModel>> call, Response<ArrayList<KategoriDosenModel>> response) {
                 kategoriDosenModels = response.body();
-                for (int i = 0; i<kategoriDosenModels.size(); i++){
+                for (int i = 0; i < kategoriDosenModels.size(); i++) {
                     LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View addView = layoutInflater.inflate(R.layout.list_rb_dosen, null);
 
-                    final  TextView tvRbIDdosen = (TextView) addView.findViewById(R.id.tvRbIDdosen);
+                    final TextView tvRbIDdosen = (TextView) addView.findViewById(R.id.tvRbIDdosen);
                     tvRbIDdosen.setText(kategoriDosenModels.get(i).getID_DOS());
 //                    Toast.makeText(PolingActivity.this, "TV" + tvRbIDdosen.getText().toString().trim(), Toast.LENGTH_SHORT).show();
 
@@ -192,12 +196,14 @@ public class PolingActivity extends AppCompatActivity{
 
                     divContainer.addView(addView);
                     loading.dismiss();
+                    sr.setRefreshing(false);
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<KategoriDosenModel>> call, Throwable t) {
                 loading.dismiss();
+                sr.setRefreshing(false);
                 Toast.makeText(PolingActivity.this, "Cek koneksi anda", Toast.LENGTH_SHORT).show();
                 divKoneksi.setVisibility(View.VISIBLE);
             }
@@ -205,7 +211,7 @@ public class PolingActivity extends AppCompatActivity{
     }
 
     private void getdataonline() {
-        ApiService apiService  = Client.getInstanceRetrofit();
+        ApiService apiService = Client.getInstanceRetrofit();
         Call<ArrayList<UserModel>> call = apiService.getUser();
         call.enqueue(new Callback<ArrayList<UserModel>>() {
             @Override
@@ -217,31 +223,30 @@ public class PolingActivity extends AppCompatActivity{
 //                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
 //                }
 //                else {
-                    for (UserModel s : userModels){
+                for (UserModel s : userModels) {
 //                    LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 //                    View view = layoutInflater.inflate(R.layout.list_transaksi_masuk, null);
-                        if (s.getNama() != null && s.getNama().contains(sp.getString(Config.SHARED_NAMA,""))){
-                            Toast.makeText(PolingActivity.this, "heh :" + sp.getString(Config.SHARED_NAMA,"") +" -- "+ s.getNama() , Toast.LENGTH_SHORT).show();
-                            if (sp.getString(Config.SHARED_NAMA, "").equalsIgnoreCase(s.getNama())){
-                                Toast.makeText(PolingActivity.this, "uhh", Toast.LENGTH_SHORT).show();
-                                divContainer.setVisibility(View.GONE);
-                                divKoneksi.setVisibility(View.VISIBLE);
-                                tvCek.setText("Anda Sudah Terdaftar");
-                                tvKoneksi.setText("Cek data");
-                                tvKoneksi.setOnClickListener(new View.OnClickListener() {
-                                    @Override
-                                    public void onClick(View view) {
-                                        // do something
-                                    }
-                                });
-                            }
-                            else {
-                                getdata(true);
-                                divKoneksi.setVisibility(View.GONE);
-                                divContainer.setVisibility(View.VISIBLE);
-                            }
+                    if (s.getNama() != null && s.getNama().contains(sp.getString(Config.SHARED_NAMA, ""))) {
+                        Toast.makeText(PolingActivity.this, "heh :" + sp.getString(Config.SHARED_NAMA, "") + " -- " + s.getNama(), Toast.LENGTH_SHORT).show();
+                        if (sp.getString(Config.SHARED_NAMA, "").equalsIgnoreCase(s.getNama())) {
+                            Toast.makeText(PolingActivity.this, "uhh", Toast.LENGTH_SHORT).show();
+                            divContainer.setVisibility(View.GONE);
+                            divKoneksi.setVisibility(View.VISIBLE);
+                            tvCek.setText("Anda Sudah Terdaftar");
+                            tvKoneksi.setText("Cek data");
+                            tvKoneksi.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    // do something
+                                }
+                            });
+                        } else {
+                            getdata(true);
+                            divKoneksi.setVisibility(View.GONE);
+                            divContainer.setVisibility(View.VISIBLE);
                         }
                     }
+                }
 //                }
 
 
@@ -319,7 +324,7 @@ public class PolingActivity extends AppCompatActivity{
     private void postData() {
         loading = ProgressDialog.show(PolingActivity.this, "", "Mengirim Data...", false, false);
         ApiService api = Client.getInstanceRetrofit();
-        api.postDosenPoling(namadosen, jabatandosen, "1", sp.getString(Config.SHARED_NPM,""), ID_DOS)
+        api.postDosenPoling(namadosen, jabatandosen, "1", sp.getString(Config.SHARED_NPM, ""), ID_DOS)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -407,6 +412,7 @@ public class PolingActivity extends AppCompatActivity{
         tvCek = (TextView) findViewById(R.id.tvCek);
 
 
+        sr = (SwipeRefreshLayout) findViewById(R.id.sr);
     }
 
     public final boolean isInternetOn() {
@@ -414,13 +420,13 @@ public class PolingActivity extends AppCompatActivity{
 
         // get Connectivity Manager object to check connection
         ConnectivityManager connec =
-                (ConnectivityManager)getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
+                (ConnectivityManager) getSystemService(getBaseContext().CONNECTIVITY_SERVICE);
 
         // Check for network connections
-        if ( connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTED ||
-                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.CONNECTING ||
-                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTING ||
-                connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.CONNECTED ) {
+        if (connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTED ||
+                connec.getNetworkInfo(0).getState() == NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTING ||
+                connec.getNetworkInfo(1).getState() == NetworkInfo.State.CONNECTED) {
             loading.dismiss();
             divKoneksi.setVisibility(View.GONE);
             divContainer.setVisibility(View.VISIBLE);
@@ -431,8 +437,8 @@ public class PolingActivity extends AppCompatActivity{
             return true;
 
         } else if (
-                connec.getNetworkInfo(0).getState() == android.net.NetworkInfo.State.DISCONNECTED ||
-                        connec.getNetworkInfo(1).getState() == android.net.NetworkInfo.State.DISCONNECTED  ) {
+                connec.getNetworkInfo(0).getState() == NetworkInfo.State.DISCONNECTED ||
+                        connec.getNetworkInfo(1).getState() == NetworkInfo.State.DISCONNECTED) {
             loading.dismiss();
             divContainer.setVisibility(View.GONE);
             divKoneksi.setVisibility(View.VISIBLE);
@@ -447,6 +453,16 @@ public class PolingActivity extends AppCompatActivity{
         isInternetOn();
 
         super.onResume();
+    }
+
+    @Override
+    public void onRefresh() {
+        isInternetOn();
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 
 //    @Override

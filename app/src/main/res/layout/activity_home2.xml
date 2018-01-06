@@ -30,7 +30,7 @@
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/sliderSlider"
         android:layout_width="match_parent"
-        android:layout_height="240sp"
+        android:layout_height="200sp"
         custom:auto_cycle="true"
         custom:indicator_visibility="visible"
         custom:pager_animation="Accordion"
@@ -65,11 +65,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -170,13 +169,36 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1sp"
+        android:background="@color/colorPrimary"
+        android:layout_marginLeft="7sp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
+        <ImageView
+            android:layout_width="100sp"
+            android:layout_height="40sp"
+            android:src="@drawable/semicolon" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="right|bottom">
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fbSukses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:tint="#FFF"/>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fbSukses"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_done"
-        android:tint="#FFF"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
 
 </LinearLayout>

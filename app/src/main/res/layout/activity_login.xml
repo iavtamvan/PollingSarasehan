@@ -19,14 +19,16 @@
             android:src="@drawable/semicolon"
             android:layout_margin="8sp"
             android:drawingCacheQuality="high"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:visibility="gone"/>
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="50sp"
             android:src="@drawable/hm"
             android:layout_margin="8sp"
             android:drawingCacheQuality="high"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:visibility="gone"/>
 
     </LinearLayout>
     <ScrollView
