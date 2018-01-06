@@ -144,7 +144,7 @@ public class LoginActivity extends AppCompatActivity {
                                     loading.dismiss();
 
 
-                                    Toast.makeText(LoginActivity.this, "Login Sukses + " , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(LoginActivity.this, "Login Sukses" , Toast.LENGTH_SHORT).show();
                                     //Creating a shared preference
                                     SharedPreferences sharedPreferences = LoginActivity.this.getSharedPreferences(Config.SHARED_TITTLE, Context.MODE_PRIVATE);
 
