@@ -44,13 +44,15 @@ public class SurveyActivity extends AppCompatActivity {
         initView();
         surveyModels = new ArrayList<>();
         kategoriDosenModels = new ArrayList<>();
-        getdata(true);
         getdataSurvey();
+        getdata(true);
+
 
 
     }
 
     private void getdata(boolean rm) {
+
         if (rm){
             if (div.getChildCount()>0) div.removeAllViews();
         }
@@ -70,7 +72,7 @@ public class SurveyActivity extends AppCompatActivity {
                     Glide.with(getApplicationContext()).load(kategoriDosenModels.get(i).getFOTODOSEN())
                         .thumbnail(1f)
                         .crossFade()
-                        .error(R.drawable.semicolon)
+                        .error(R.mipmap.ic_launcher_round)
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .into(ciSurveyDosen);
 
@@ -81,6 +83,12 @@ public class SurveyActivity extends AppCompatActivity {
 
                     final TextView tvRSurveySuaraDosen = (TextView) addView.findViewById(R.id.tvRSurveySuaraDosen);
 
+
+
+
+
+
+
                     if (surveyModels == null){
                         loading.dismiss();
                         Toast.makeText(SurveyActivity.this, "Cek Koneksi Anda", Toast.LENGTH_SHORT).show();
@@ -88,38 +96,42 @@ public class SurveyActivity extends AppCompatActivity {
                     }
                     else {
 
-
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("F.M. DEWANTO S.E, M.KOM.")) {
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getFMDEWANTOSEMKOM() + " Suara");
-                        }
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("SETYONINGSIH WIBOWO, S.T., M.KOM.")) {
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getSETYONINGSIHWIBOWOSTMKOM() + " Suara");
-                        }
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("B.A. HERLAMBANG")) {
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getBAHERLAMBANG() + " Suara");
-                        }
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("ARIS TRI J.H., S.KOM.,M.KOM.")) {
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getARISTRIJHSKOMMKOM() + " Suara");
-                        }
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("KHOIRIYA LATIFAH, S.KOM., M.KOM.")) {
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getKHOIRIYALATIFAHSKOMMKOM() + " Suara");
-                        }
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("NOORA Q.N., S.T., M.ENG.")){
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getNOORAQNSTMENG() + " Suara");
-                        }
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("Mega Novita S.Si.,M.Si.,M.Nat.Sc.,P.hd")){
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getMegaNovitaSSiMSiMNatScPHd() + " Suara");
-                        }
-                        if (tvSurveyNamaDosen.getText().toString()
-                                .contains("Rahmat Robi Waliyansyah")){
-                            tvRSurveySuaraDosen.setText(surveyModels.get(i).getRahmatRobiWaliyansyah() + " Suara");
+                        if (surveyModels == null){
+                            getdataSurvey();
+                            return;
+                        } else {
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("F.M. DEWANTO S.E, M.KOM.")) {
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getFMDEWANTOSEMKOM() + " Suara");
+                            }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("SETYONINGSIH WIBOWO, S.T., M.KOM.")) {
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getSETYONINGSIHWIBOWOSTMKOM() + " Suara");
+                            }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("B.A. HERLAMBANG")) {
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getBAHERLAMBANG() + " Suara");
+                            }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("ARIS TRI J.H., S.KOM.,M.KOM.")) {
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getARISTRIJHSKOMMKOM() + " Suara");
+                            }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("KHOIRIYA LATIFAH, S.KOM., M.KOM.")) {
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getKHOIRIYALATIFAHSKOMMKOM() + " Suara");
+                            }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("NOORA Q.N., S.T., M.ENG.")){
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getNOORAQNSTMENG() + " Suara");
+                            }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("Mega Novita S.Si.,M.Si.,M.Nat.Sc.,P.hd")){
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getMegaNovitaSSiMSiMNatScPHd() + " Suara");
+                            }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("Rahmat Robi Waliyansyah")){
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getRahmatRobiWaliyansyah() + " Suara");
+                            }
                         }
                     }
 
@@ -175,27 +187,6 @@ public class SurveyActivity extends AppCompatActivity {
                     noora = surveyModels.get(i).getNOORAQNSTMENG();
                     mega = surveyModels.get(i).getMegaNovitaSSiMSiMNatScPHd();
                     roby = surveyModels.get(i).getRahmatRobiWaliyansyah();
-                    
-
-//                    LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-//                    View addView = layoutInflater.inflate(R.layout.list_survey_dosen, null);
-
-//                    final CircleImageView ciSurveyDosen = (CircleImageView) addView.findViewById(R.id.ciSurveyDosen);
-//                Glide.with(getApplicationContext()).load(SurveyModels.get(i).getFOTODOSEN())
-//                        .thumbnail(1f)
-//                        .crossFade()
-//                        .error(R.drawable.semicolon)
-//                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-//                        .into(ciRbFotoDosen);
-
-
-//                    final TextView tvSurveyNamaDosen = (TextView) addView.findViewById(R.id.tvSurveyNamaDosen);
-//                    tvSurveyNamaDosen.setText(surveyModels.get(i).getFMDEWANTOSEMKOM());
-//                    tvSurveyNamaDosen.setText(surveyModels.get(i).getARISTRIJHSKOMMKOM());
-//                    tvSurveyNamaDosen.setText(surveyModels.get(i).getBAHERLAMBANG());
-//                    tvSurveyNamaDosen.setText(surveyModels.get(i).getRahmatRobiWaliyansyah());
-//
-//                    final TextView tvRSurveySuaraDosen = (TextView) addView.findViewById(R.id.tvRSurveySuaraDosen);
 
                 }
             }
