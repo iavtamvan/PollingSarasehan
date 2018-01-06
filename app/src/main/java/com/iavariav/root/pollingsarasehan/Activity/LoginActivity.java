@@ -120,7 +120,7 @@ public class LoginActivity extends AppCompatActivity {
             AdRequest adRequest = new AdRequest.Builder().build();
             adView.loadAd(adRequest);
 
-            div.addView(addView);
+//            div.addView(addView);
 
         }
     }
