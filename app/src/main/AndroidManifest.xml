@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.iavariav.root.pollingsarasehan">
 
-    <!--<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />-->
-    <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
+    <!-- <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> -->
+    <!-- <uses-permission android:name="android.permission.READ_PHONE_STATE" /> -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
 
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
     <application
         android:allowBackup="true"
         android:icon="@drawable/semicolon"
@@ -30,11 +30,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.HomeActivity"
-            android:label="HOME"/>
-        <activity android:name=".Activity.SurveyActivity"
-            android:parentActivityName=".Activity.HomeActivity"
-            android:label="Survey"></activity>
+        <activity
+            android:name=".Activity.HomeActivity"
+            android:label="HOME" />
+        <activity
+            android:name=".Activity.SurveyActivity"
+            android:label="Survey"
+            android:parentActivityName=".Activity.HomeActivity" />
+        <activity android:name=".Activity.DataMahasiswaActivity"
+            android:label="Data Mahasiswa"></activity>
     </application>
 
 </manifest>

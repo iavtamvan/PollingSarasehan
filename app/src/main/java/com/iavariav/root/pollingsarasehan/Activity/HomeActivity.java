@@ -16,9 +16,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.iavariav.root.pollingsarasehan.Helper.Config;
 import com.iavariav.root.pollingsarasehan.R;
@@ -87,37 +89,38 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
 
         HashMap<String, String> url_maps = new HashMap<String, String>();
         // * Get internet
-//        url_maps.put("Hannibal", "http://sdk.semarangkota.go.id/komunitas/logosdk.png");
-//        url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
-//        url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
-//        url_maps.put("Game of Thrones", "http://sdk.semarangkota.go.id/komunitas/logosdk.png");
+        url_maps.put("Hannibal", "http://sdk.semarangkota.go.id/komunitas/logosdk.png");
+        url_maps.put("Big Bang Theory", "http://tvfiles.alphacoders.com/100/hdclearart-10.png");
+        url_maps.put("House of Cards", "http://cdn3.nflximg.net/images/3093/2043093.jpg");
+        url_maps.put("Game of Thrones", "http://sdk.semarangkota.go.id/komunitas/logosdk.png");
         // * Get internet
 
-//        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
+        file_maps.put("Semicolon", R.drawable.semicolon);
 //        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
-//        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
-//        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
-//
-//        for (String name : file_maps.keySet()) {
-//            TextSliderView textSliderView = new TextSliderView(this);
-//            // initialize a SliderLayout
-//            textSliderView
-//                    .description(name)
-//                    .image(file_maps.get(name))
-//                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop)
-//                    .setOnSliderClickListener(this);
-//            //add your extra information
-//            textSliderView.bundle(new Bundle());
-//            textSliderView.getBundle()
-//                    .putString("extra", name);
-//
-//            mSliderSlider.addSlider(textSliderView);
-//        }
-//        mSliderSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-//        mSliderSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-//        mSliderSlider.setCustomAnimation(new DescriptionAnimation());
-//        mSliderSlider.setDuration(4000);
-//        mSliderSlider.addOnPageChangeListener(this);
+//        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.semicolon);
+
+        for (String name : file_maps.keySet()) {
+            TextSliderView textSliderView = new TextSliderView(this);
+            // initialize a SliderLayout
+            textSliderView
+                    .description(name)
+                    .image(file_maps.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop)
+                    .setOnSliderClickListener(this);
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle()
+                    .putString("extra", name);
+
+            mSliderSlider.addSlider(textSliderView);
+        }
+        mSliderSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        mSliderSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mSliderSlider.setCustomAnimation(new DescriptionAnimation());
+        mSliderSlider.setDuration(4000);
+        mSliderSlider.addOnPageChangeListener(this);
 
 
         cvPoling.setOnClickListener(new View.OnClickListener() {
@@ -139,6 +142,12 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
             }
         });
 
+        cvCekMahasiswa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), DataMahasiswaActivity.class));
+            }
+        });
 
         fbSukses.setOnClickListener(new View.OnClickListener() {
             @Override

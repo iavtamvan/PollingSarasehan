@@ -1,41 +1,42 @@
 package com.iavariav.root.pollingsarasehan.Model;
 
-public class UserModel{
-	private String nama;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+public class UserModel {
+
+//	@SerializedName("npm")
+	@Expose
 	private String npm;
+//	@SerializedName("nama")
+	@Expose
+	private String nama;
+//	@SerializedName("hwid")
+	@Expose
 	private String hwid;
 
-	public void setNama(String nama){
-		this.nama = nama;
-	}
-
-	public String getNama(){
-		return nama;
-	}
-
-	public void setNpm(String npm){
-		this.npm = npm;
-	}
-
-	public String getNpm(){
+	public String getNpm() {
 		return npm;
 	}
 
-	public void setHwid(String hwid){
-		this.hwid = hwid;
+	public void setNpm(String npm) {
+		this.npm = npm;
 	}
 
-	public String getHwid(){
+	public String getNama() {
+		return nama;
+	}
+
+	public void setNama(String nama) {
+		this.nama = nama;
+	}
+
+	public String getHwid() {
 		return hwid;
 	}
 
-	@Override
- 	public String toString(){
-		return 
-			"UserModel{" + 
-			"nama = '" + nama + '\'' + 
-			",npm = '" + npm + '\'' + 
-			",hwid = '" + hwid + '\'' + 
-			"}";
-		}
+	public void setHwid(String hwid) {
+		this.hwid = hwid;
+	}
+
 }

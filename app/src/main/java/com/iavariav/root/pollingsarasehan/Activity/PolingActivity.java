@@ -147,7 +147,7 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
                     Glide.with(getApplicationContext()).load(kategoriDosenModels.get(i).getFOTODOSEN())
                             .thumbnail(1f)
                             .crossFade()
-                            .error(R.drawable.semicolon)
+                            .error(R.drawable.errorman)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(ciRbFotoDosen);
 

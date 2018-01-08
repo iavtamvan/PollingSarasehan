@@ -45,7 +45,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
         initView();
         surveyModels = new ArrayList<>();
         kategoriDosenModels = new ArrayList<>();
-        getdataSurvey();
+        getdataSurvey(true);
 
         sr.setOnRefreshListener(this);
 
@@ -74,7 +74,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                     Glide.with(getApplicationContext()).load(kategoriDosenModels.get(i).getFOTODOSEN())
                             .thumbnail(1f)
                             .crossFade()
-                            .error(R.mipmap.ic_launcher_round)
+                            .error(R.drawable.errorman)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(ciSurveyDosen);
 
@@ -93,7 +93,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                     } else {
 
                         if (surveyModels == null) {
-                            getdataSurvey();
+                            getdataSurvey(true);
                             return;
                         } else {
                             if (tvSurveyNamaDosen.getText().toString()
@@ -169,7 +169,10 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
         });
     }
 
-    private void getdataSurvey() {
+    private void getdataSurvey(boolean rm) {
+        if (rm) {
+            if (div.getChildCount() > 0) div.removeAllViews();
+        }
         loading = ProgressDialog.show(SurveyActivity.this, "", "Mengambil Data Survey...", false, false);
         ApiService apiService = Client.getInstanceRetrofit();
         Call<ArrayList<SurveyModel>> call = apiService.getDataSurveyDosen();
@@ -194,6 +197,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
 
             @Override
             public void onFailure(Call<ArrayList<SurveyModel>> call, Throwable t) {
+                loading.dismiss();
                 sr.setRefreshing(false);
             }
         });
@@ -206,8 +210,8 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
 
     @Override
     public void onRefresh() {
-        getdataSurvey();
-        getdata(true);
+        getdataSurvey(true);
+//        getdata(true);
     }
 
     @Override
