@@ -342,7 +342,7 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
                             editor.putString(Config.SHARED_NPM1, NPM);
                             editor.commit();
 
-                            Toast.makeText(PolingActivity.this, "Sukses Tambah", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(PolingActivity.this, "Sukses Survey", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                             finishAffinity();
 //                            try {

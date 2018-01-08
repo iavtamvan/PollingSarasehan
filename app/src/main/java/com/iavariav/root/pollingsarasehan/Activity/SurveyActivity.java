@@ -46,7 +46,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
         surveyModels = new ArrayList<>();
         kategoriDosenModels = new ArrayList<>();
         getdataSurvey();
-        getdata(true);
+
         sr.setOnRefreshListener(this);
 
 
@@ -170,6 +170,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
     }
 
     private void getdataSurvey() {
+        loading = ProgressDialog.show(SurveyActivity.this, "", "Mengambil Data Survey...", false, false);
         ApiService apiService = Client.getInstanceRetrofit();
         Call<ArrayList<SurveyModel>> call = apiService.getDataSurveyDosen();
         call.enqueue(new Callback<ArrayList<SurveyModel>>() {
@@ -187,6 +188,8 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                     roby = surveyModels.get(i).getRahmatRobiWaliyansyah();
 
                 }
+                loading.dismiss();
+                getdata(true);
             }
 
             @Override

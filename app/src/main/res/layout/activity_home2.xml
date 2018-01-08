@@ -12,7 +12,40 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:orientation="horizontal"
-        android:background="@color/colorPrimaryDark">
+        android:background="@color/colorPrimary"
+        android:layout_margin="8sp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="HOME"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="#FFF"
+            android:layout_marginLeft="8sp"
+            android:layout_weight="1"
+            android:layout_gravity="center"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="right"
+            android:layout_weight="1">
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/fbSukses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_done"
+                android:tint="#FFF"
+                android:layout_margin="4sp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark"
+        android:layout_margin="8sp">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -65,10 +98,10 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
@@ -89,8 +122,7 @@
                             android:layout_width="100sp"
                             android:layout_height="100sp"
                             android:layout_marginLeft="8sp"
-                            android:id="@+id/ciPoling"
-                            android:src="@drawable/polingcek"/>
+                            android:id="@+id/ciPoling"/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -107,7 +139,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Poling"
                                 android:gravity="center"
-                                android:textSize="40sp"
+                                android:textSize="30sp"
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>
                         <View
@@ -138,8 +170,7 @@
                             android:layout_width="100sp"
                             android:layout_height="100sp"
                             android:layout_marginLeft="8sp"
-                            android:id="@+id/ciCekSuara"
-                            android:src="@drawable/suara"/>
+                            android:id="@+id/ciCekSuara"/>
                         <View
                             android:layout_width="1dp"
                             android:layout_height="match_parent"
@@ -156,7 +187,54 @@
                                 android:layout_height="wrap_content"
                                 android:text="Cek Suara"
                                 android:gravity="center"
-                                android:textSize="40sp"
+                                android:textSize="30sp"
+                                android:textColor="@color/colorPrimary" />
+                        </LinearLayout>
+                        <View
+                            android:layout_width="5dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/colorPrimary"
+                            android:layout_marginLeft="7sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10sp"
+                android:layout_margin="8sp"
+                android:id="@+id/cvCekMahasiswa">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:id="@+id/divCekMahasiswa">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <de.hdodenhof.circleimageview.CircleImageView
+                            android:layout_width="100sp"
+                            android:layout_height="100sp"
+                            android:layout_marginLeft="8sp"
+                            android:id="@+id/ciCekMahasiswa"/>
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="match_parent"
+                            android:background="#b2b2b2"
+                            android:layout_marginLeft="7sp"/>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center"
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Cek Data Mahasiswa"
+                                android:gravity="center"
+                                android:textSize="30sp"
                                 android:textColor="@color/colorPrimary" />
                         </LinearLayout>
                         <View
@@ -169,35 +247,29 @@
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1sp"
-        android:background="@color/colorPrimary"
-        android:layout_marginLeft="7sp"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_gravity="bottom"
-        android:gravity="bottom">
-        <ImageView
-            android:layout_width="100sp"
-            android:layout_height="40sp"
-            android:src="@drawable/semicolon" />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:gravity="right|bottom">
-            <android.support.design.widget.FloatingActionButton
-                android:id="@+id/fbSukses"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_done"
-                android:tint="#FFF"/>
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="1sp"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--android:layout_marginLeft="7sp"/>-->
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_gravity="bottom"-->
+        <!--android:gravity="bottom"-->
+        <!--android:layout_weight="1">-->
+        <!--<ImageView-->
+            <!--android:layout_width="100sp"-->
+            <!--android:layout_height="40sp" />-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="vertical"-->
+            <!--android:gravity="right|bottom">-->
 
-        </LinearLayout>
-    </LinearLayout>
+        <!--</LinearLayout>-->
+    <!--</LinearLayout>-->
 
 
 

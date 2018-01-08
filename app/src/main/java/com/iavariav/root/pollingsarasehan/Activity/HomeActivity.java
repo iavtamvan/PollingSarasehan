@@ -16,11 +16,9 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 import com.iavariav.root.pollingsarasehan.Helper.Config;
 import com.iavariav.root.pollingsarasehan.R;
@@ -53,11 +51,15 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
     private CardView cvSuara;
     private String NPM;
     private FloatingActionButton fbSukses;
+    private CardView cvCekMahasiswa;
+    private LinearLayout divCekMahasiswa;
+    private CircleImageView ciCekMahasiswa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home2);
+        getSupportActionBar().hide();
         initView();
 
         sp = getSharedPreferences(Config.SHARED_TITTLE, Context.MODE_PRIVATE);
@@ -91,31 +93,31 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
 //        url_maps.put("Game of Thrones", "http://sdk.semarangkota.go.id/komunitas/logosdk.png");
         // * Get internet
 
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
-        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
-        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
-
-        for (String name : file_maps.keySet()) {
-            TextSliderView textSliderView = new TextSliderView(this);
-            // initialize a SliderLayout
-            textSliderView
-                    .description(name)
-                    .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop)
-                    .setOnSliderClickListener(this);
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle()
-                    .putString("extra", name);
-
-            mSliderSlider.addSlider(textSliderView);
-        }
-        mSliderSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        mSliderSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mSliderSlider.setCustomAnimation(new DescriptionAnimation());
-        mSliderSlider.setDuration(4000);
-        mSliderSlider.addOnPageChangeListener(this);
+//        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+//        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
+//        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
+//        file_maps.put("Himpunan Mahasiswa Informatika", R.drawable.hm);
+//
+//        for (String name : file_maps.keySet()) {
+//            TextSliderView textSliderView = new TextSliderView(this);
+//            // initialize a SliderLayout
+//            textSliderView
+//                    .description(name)
+//                    .image(file_maps.get(name))
+//                    .setScaleType(BaseSliderView.ScaleType.FitCenterCrop)
+//                    .setOnSliderClickListener(this);
+//            //add your extra information
+//            textSliderView.bundle(new Bundle());
+//            textSliderView.getBundle()
+//                    .putString("extra", name);
+//
+//            mSliderSlider.addSlider(textSliderView);
+//        }
+//        mSliderSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+//        mSliderSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+//        mSliderSlider.setCustomAnimation(new DescriptionAnimation());
+//        mSliderSlider.setDuration(4000);
+//        mSliderSlider.addOnPageChangeListener(this);
 
 
         cvPoling.setOnClickListener(new View.OnClickListener() {
@@ -161,6 +163,9 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
         cvPoling = (CardView) findViewById(R.id.cvPoling);
         cvSuara = (CardView) findViewById(R.id.cvSuara);
         fbSukses = (FloatingActionButton) findViewById(R.id.fbSukses);
+        cvCekMahasiswa = (CardView) findViewById(R.id.cvCekMahasiswa);
+        divCekMahasiswa = (LinearLayout) findViewById(R.id.divCekMahasiswa);
+        ciCekMahasiswa = (CircleImageView) findViewById(R.id.ciCekMahasiswa);
     }
 
     @Override
