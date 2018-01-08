@@ -338,7 +338,7 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
                             SharedPreferences.Editor editor = sharedPreferences.edit();
 
                             //Adding values to editor
-                            editor.putBoolean(Config.SHARED_TITTLE, true);
+//                            editor.putBoolean(Config.SHARED_TITTLE, true);
                             editor.putString(Config.SHARED_NPM1, NPM);
                             editor.commit();
 

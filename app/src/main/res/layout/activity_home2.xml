@@ -252,7 +252,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:layout_weight="1.5"
+        android:layout_weight="1.6"
         android:gravity="bottom|right">
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fbSukses"

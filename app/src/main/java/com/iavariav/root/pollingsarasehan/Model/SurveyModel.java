@@ -29,6 +29,18 @@ public class SurveyModel {
     @SerializedName("Rahmat Robi Waliyansyah")
     @Expose
     private String rahmatRobiWaliyansyah;
+    @SerializedName("Nugroho D.S")
+    @Expose
+    private String NugrohoDS;
+
+    public String getNugrohoDS() {
+        return NugrohoDS;
+    }
+
+    public void setNugrohoDS(String nugrohoDS) {
+        NugrohoDS = nugrohoDS;
+    }
+
 
     public String getFMDEWANTOSEMKOM() {
         return fMDEWANTOSEMKOM;

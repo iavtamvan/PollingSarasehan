@@ -28,7 +28,7 @@
                     android:textSize="18sp"
                     android:layout_weight="1"
                     android:gravity="left|center"
-                    android:drawableLeft="@drawable/ic_status"
+                    android:drawableLeft="@drawable/man"
                     android:layout_marginLeft="8sp"
                     android:drawableTint="#FFF"
                     android:id="@+id/tvStatusLogin"/>

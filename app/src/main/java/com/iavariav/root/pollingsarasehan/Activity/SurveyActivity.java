@@ -33,7 +33,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
     private ArrayList<KategoriDosenModel> kategoriDosenModels;
 
 
-    private String febrian, ning, beng, aris, ifah, noora, mega, roby;
+    private String febrian, ning, beng, aris, ifah, noora, mega, roby, nugroho;
     private ProgressDialog loading;
     private SwipeRefreshLayout sr;
 
@@ -128,6 +128,10 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                                     .contains("Rahmat Robi Waliyansyah")) {
                                 tvRSurveySuaraDosen.setText(surveyModels.get(i).getRahmatRobiWaliyansyah() + " Suara");
                             }
+                            if (tvSurveyNamaDosen.getText().toString()
+                                    .contains("Nugroho D.S")) {
+                                tvRSurveySuaraDosen.setText(surveyModels.get(i).getNugrohoDS() + " Suara");
+                            }
                         }
                     }
 
@@ -189,6 +193,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                     noora = surveyModels.get(i).getNOORAQNSTMENG();
                     mega = surveyModels.get(i).getMegaNovitaSSiMSiMNatScPHd();
                     roby = surveyModels.get(i).getRahmatRobiWaliyansyah();
+                    nugroho = surveyModels.get(i).getNugrohoDS();
 
                 }
                 loading.dismiss();
