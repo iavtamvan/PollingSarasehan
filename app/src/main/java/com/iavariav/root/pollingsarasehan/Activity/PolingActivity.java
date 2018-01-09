@@ -87,6 +87,8 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
         Bundle bundle = intent.getExtras();
         sr.setOnRefreshListener(this);
 
+        isInternetOn();
+
         NPM = bundle.getString("npm");
 //        Toast.makeText(this, "Npm Bundle : " + NPM, Toast.LENGTH_SHORT).show();
 
@@ -147,7 +149,7 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
                     Glide.with(getApplicationContext()).load(kategoriDosenModels.get(i).getFOTODOSEN())
                             .thumbnail(1f)
                             .crossFade()
-                            .error(R.drawable.errorman)
+                            .error(R.drawable.ic_status)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(ciRbFotoDosen);
 
@@ -324,7 +326,7 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
     private void postData() {
         loading = ProgressDialog.show(PolingActivity.this, "", "Mengirim Data...", false, false);
         ApiService api = Client.getInstanceRetrofit();
-        api.postDosenPoling(namadosen, jabatandosen, "1", sp.getString(Config.SHARED_NPM, ""), ID_DOS)
+        api.postDosenPoling(namadosen, jabatandosen, "1", NPM, ID_DOS)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
@@ -448,12 +450,12 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
         return false;
     }
 
-    @Override
-    protected void onResume() {
-        isInternetOn();
-
-        super.onResume();
-    }
+//    @Override
+//    protected void onResume() {
+//
+//
+//        super.onResume();
+//    }
 
     @Override
     public void onRefresh() {

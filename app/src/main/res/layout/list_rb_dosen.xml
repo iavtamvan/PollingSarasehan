@@ -47,7 +47,8 @@
                 <RadioButton
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/rbNamaDosen"/>
+                    android:id="@+id/rbNamaDosen"
+                    android:textSize="14dp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
