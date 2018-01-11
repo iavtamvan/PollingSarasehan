@@ -10,11 +10,13 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -76,6 +78,9 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
     private ArrayList<UserModel> userModels;
     private SwipeRefreshLayout sr;
 
+    private AlertDialog.Builder builder;
+    private LayoutInflater inflater;
+    private String varSaran, varKritik;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +94,8 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
 
         isInternetOn();
 
-        NPM = bundle.getString("npm");
+//        NPM = bundle.getString("npm");
+        NPM = sp.getString(Config.SHARED_NPM, "");
 //        Toast.makeText(this, "Npm Bundle : " + NPM, Toast.LENGTH_SHORT).show();
 
 
@@ -163,10 +169,41 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
                     rbDosen.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
+                            divContainer.setVisibility(View.GONE);
                             namadosen = rbDosen.getText().toString().trim();
                             jabatandosen = tvJabatanDosen.getText().toString().trim();
                             ID_DOS = tvRbIDdosen.getText().toString().trim();
 
+                            builder = new AlertDialog.Builder(PolingActivity.this);
+                            inflater = LayoutInflater.from(PolingActivity.this);
+                            final View dialView = inflater.inflate(R.layout.dialog_komentar, null);
+                            final TextView tvKomentarAndaMemilihDosen = (TextView) dialView.findViewById(R.id.tvKomentarAndaMemilihDosen);
+                            final EditText edtKomentar = (EditText) dialView.findViewById(R.id.edtKomentarSaran);
+                            final EditText edtKomentarKritik = (EditText) dialView.findViewById(R.id.edtKomentarKritik);
+                            final Button btnDialogKomentarTidak = (Button) dialView.findViewById(R.id.btnDialogKomentarTidak);
+                            final Button btnDialogKomentarYa = (Button) dialView.findViewById(R.id.btnDialogKomentarYa);
+
+                            tvKomentarAndaMemilihDosen.setText("Anda memilih dosen "+ namadosen + " apakah anda yakin ?");
+
+                            btnDialogKomentarYa.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    varSaran = edtKomentar.getText().toString().trim();
+                                    varKritik = edtKomentarKritik.getText().toString().trim();
+                                    postData();
+                                }
+                            });
+
+                            btnDialogKomentarTidak.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    finish();
+                                    startActivity(new Intent(getBaseContext(), PolingActivity.class));
+                                }
+                            });
+
+                            builder.setView(dialView);
+                            builder.show();
 
 //                            final AlertDialog.Builder builder = new AlertDialog.Builder(PolingActivity.this);
 //
@@ -188,8 +225,6 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
 //                                    }
 //                                }
 //                            });
-
-                            postData();
 
 
                         }
@@ -268,7 +303,31 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
                 if (checked) {
                     namadosen = rbDosen1.getText().toString().trim();
                     Toast.makeText(this, "Hasil " + namadosen, Toast.LENGTH_SHORT).show();
-                    postData();
+                    builder = new AlertDialog.Builder(PolingActivity.this);
+                    inflater = LayoutInflater.from(PolingActivity.this);
+                    final View dialView = inflater.inflate(R.layout.dialog_komentar, null);
+                    final EditText edtKomentar = (EditText) dialView.findViewById(R.id.edtKomentarSaran);
+                    final Button btnDialogKomentarTidak = (Button) dialView.findViewById(R.id.btnDialogKomentarTidak);
+                    final Button btnDialogKomentarYa = (Button) dialView.findViewById(R.id.btnDialogKomentarYa);
+
+                    btnDialogKomentarYa.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            varSaran = edtKomentar.getText().toString().trim();
+                            postData();
+                        }
+                    });
+
+                    btnDialogKomentarTidak.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            finish();
+                        }
+                    });
+
+                    builder.setView(dialView);
+                    builder.show();
+
                     break;
                 }
             case R.id.rbDosen2:
@@ -326,7 +385,7 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
     private void postData() {
         loading = ProgressDialog.show(PolingActivity.this, "", "Mengirim Data...", false, false);
         ApiService api = Client.getInstanceRetrofit();
-        api.postDosenPoling(namadosen, jabatandosen, "1", NPM, ID_DOS)
+        api.postDosenPoling(namadosen, jabatandosen, "1", NPM, varSaran, varKritik, ID_DOS)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {

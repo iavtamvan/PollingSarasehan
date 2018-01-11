@@ -12,6 +12,7 @@ import com.iavariav.root.pollingsarasehan.Activity.LoginActivity;
 
 public final class Config {
 
+    public static final String BASE_URL_IMG = "http://suci.can.web.id/images/img/";
     public static final String SHARED_TITTLE = "POOLING";
     public static final String SHARED_NPM = "shared npm";
     public static final String SHARED_NPM1 = "shared npm1";

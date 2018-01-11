@@ -20,16 +20,22 @@
             android:id="@+id/divContainerRbDosen">
             <View
                 android:layout_width="5sp"
-                android:layout_height="80sp"
+                android:layout_height="140sp"
                 android:background="#ffb300"
                 android:layout_gravity="center"/>
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:layout_margin="1sp">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="100sp"
+                    android:layout_height="70sp"
+                    android:src="@drawable/ic_status"
+                    android:id="@+id/ciFotoMahasiswa"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4sp"/>
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

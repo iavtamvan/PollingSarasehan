@@ -31,6 +31,8 @@ public interface ApiService {
                                          @Field("JABATAN_DOSEN") String jabatandosen,
                                          @Field("POLING") String poling,
                                          @Field("NPM") String npm,
+                                         @Field("SARAN") String komentar,
+                                         @Field("KRITIK") String kritik,
                                          @Field("ID_DOS") String ID_DOS);
     @FormUrlEncoded
     @POST("user.php")

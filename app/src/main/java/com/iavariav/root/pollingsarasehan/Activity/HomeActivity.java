@@ -22,6 +22,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.iavariav.root.pollingsarasehan.Activity.MhsdanKomentar.DataMahasiswaActivity;
 import com.iavariav.root.pollingsarasehan.Helper.Config;
 import com.iavariav.root.pollingsarasehan.R;
 

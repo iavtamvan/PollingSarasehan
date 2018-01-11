@@ -32,6 +32,7 @@
         android:layout_weight="1"
         app:lottie_autoPlay="true"
         tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp" />
+        tools:layout_editor_absoluteX="8dp"
+        android:layout_margin="20sp"/>
 
 </LinearLayout>

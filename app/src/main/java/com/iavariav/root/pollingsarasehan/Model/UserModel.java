@@ -11,10 +11,20 @@ public class UserModel {
 //	@SerializedName("nama")
 	@Expose
 	private String nama;
-//	@SerializedName("hwid")
+//	@SerializedName("kelas")
 	@Expose
-	private String hwid;
+	private String kelas;
 
+	@Expose
+	private String img;
+
+	public String getImg() {
+		return img;
+	}
+
+	public void setImg(String img) {
+		this.img = img;
+	}
 	public String getNpm() {
 		return npm;
 	}
@@ -31,12 +41,12 @@ public class UserModel {
 		this.nama = nama;
 	}
 
-	public String getHwid() {
-		return hwid;
+	public String getkelas() {
+		return kelas;
 	}
 
-	public void setHwid(String hwid) {
-		this.hwid = hwid;
+	public void setkelas(String kelas) {
+		this.kelas = kelas;
 	}
 
 }

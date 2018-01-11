@@ -402,10 +402,10 @@ public class LoginActivity extends AppCompatActivity {
 
     private void uploadImage() {
 
-        final ProgressDialog p  ;
-        p = new ProgressDialog(this);
-        p.setMessage("Upload Foto");
-        p.show();
+//        final ProgressDialog p  ;
+//        p = new ProgressDialog(this);
+//        p.setMessage("Upload Foto");
+//        p.show();
 
         APIService s = RetroClient.getService();
 
@@ -419,7 +419,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Result> call, Response<Result> response) {
 
-                p.dismiss();
+//                p.dismiss();
                 if (response.isSuccessful()){
                     if (response.body().getResult().equals("success"))
                         Snackbar.make(parentView, "upload Success", Snackbar.LENGTH_INDEFINITE).show();
@@ -438,7 +438,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Result> call, Throwable t) {
 
-                p.dismiss();
+//                p.dismiss();
 
 
 
@@ -527,7 +527,7 @@ public class LoginActivity extends AppCompatActivity {
         ApiService api = Client.getInstanceRetrofit();
         api.postLogin(edtusername.getText().toString().trim(),
                 edtpassword.getText().toString().trim(),
-                edtKelas.getText().toString().trim(), h)
+                "Informatika/ " +edtKelas.getText().toString().trim(), h)
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
