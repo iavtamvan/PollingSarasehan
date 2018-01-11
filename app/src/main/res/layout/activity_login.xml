@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bglogin"
+    android:id="@+id/vvvv"
     tools:context="com.iavariav.root.pollingsarasehan.Activity.LoginActivity"
     android:orientation="vertical">
     <LinearLayout
@@ -31,15 +32,18 @@
             android:visibility="gone"/>
 
     </LinearLayout>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="180sp"
+        android:src="@drawable/hm"
+        android:layout_marginTop="8sp"/>
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_gravity="center"
                 android:layout_margin="10sp"
                 android:background="@drawable/rectangle">
                 <android.support.design.widget.TextInputLayout
@@ -64,6 +68,16 @@
                         android:inputType="textCapSentences"
                         android:hint="Nama"/>
                 </android.support.design.widget.TextInputLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/edtKelas"
+                        android:inputType="textCapSentences"
+                        android:hint="Kelas (ex. 3A)"/>
+                </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -75,6 +89,33 @@
                         android:hint="HWID"
                         android:visibility="gone"/>
                 </android.support.design.widget.TextInputLayout>
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/btnUpload"
+                    android:text="Upload"
+                    android:background="@color/colorPrimaryDark"
+                    android:textColor="#FFF"
+                    android:textSize="25sp"
+                    android:visibility="gone"/>
+                <FrameLayout
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:id="@+id/camera_preview"></FrameLayout>
+                <TextView
+                    android:layout_width="1dp"
+                    android:layout_height="1dp"
+                    android:text="ini textView Gmabr"
+                    android:id="@+id/textView"/>
+
+                <ImageView
+                    android:layout_below="@+id/textView"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:src="@mipmap/ic_launcher"
+                    android:onClick="showImagePopup"
+                    android:id="@+id/imageView"
+                    android:adjustViewBounds="true" />
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

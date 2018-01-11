@@ -36,7 +36,8 @@ public interface ApiService {
     @POST("user.php")
     Call<ResponseBody> postLogin  (@Field("npm") String emaillogin,
                                    @Field("nama") String passwordLogin,
-                                   @Field("hwid") String hwid);
+                                   @Field("kelas") String kelas,
+                                   @Field("img") String img);
 
 
 }
