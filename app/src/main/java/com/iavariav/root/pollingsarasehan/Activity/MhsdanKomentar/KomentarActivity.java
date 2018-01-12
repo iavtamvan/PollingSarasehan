@@ -45,6 +45,7 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         namaDosen = bundle.getString(Config.BUNDLE_NAMA_DOSEN);
+        sr.setOnRefreshListener(this);
 //        Toast.makeText(this, "Hasil : " + namaDosen, Toast.LENGTH_SHORT).show();
 
         getdatKomentarDariMhs(true);
@@ -89,6 +90,7 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
                             div.addView(addView);
                         }
                     }
+                    sr.setRefreshing(false);
                     loading.dismiss();
 
                 }
@@ -96,7 +98,9 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
 
             @Override
             public void onFailure(Call<ArrayList<PolingSuaraModel>> call, Throwable t) {
-
+                loading.dismiss();
+                sr.setRefreshing(false);
+                Toast.makeText(KomentarActivity.this, "Cek koneksi anda", Toast.LENGTH_SHORT).show();
             }
         });
     }
