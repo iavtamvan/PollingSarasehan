@@ -21,7 +21,6 @@
                 android:maxLength="12"
                 android:background="@color/colorPrimaryDark"
                 android:gravity="center|left"
-                android:paddingLeft="4dp"
                 android:textColor="#FFF"
                 android:padding="4sp"
                 android:id="@+id/tvListKomentarDari"/>
@@ -95,7 +94,6 @@
                 android:text="Untuk"
                 android:background="@color/colorPrimary"
                 android:gravity="center|left"
-                android:paddingLeft="4dp"
                 android:textColor="#FFF"
                 android:padding="4sp"
                 android:id="@+id/tvListKomentarUntuk"/>

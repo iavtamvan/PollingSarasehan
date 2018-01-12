@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.iavariav.root.pollingsarasehan.Activity.PolingActivity;
 import com.iavariav.root.pollingsarasehan.Helper.Config;
 import com.iavariav.root.pollingsarasehan.Model.PolingSuaraModel;
 import com.iavariav.root.pollingsarasehan.R;
@@ -25,7 +24,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class KomentarActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener{
+public class KomentarActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
     // String Bundle
     private String namaDosen;
     // String Bundle
@@ -33,6 +32,7 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
     private ArrayList<PolingSuaraModel> polingSuaraModels;
     private LinearLayout div;
     private ProgressDialog loading;
+    private SwipeRefreshLayout sr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         namaDosen = bundle.getString(Config.BUNDLE_NAMA_DOSEN);
-        Toast.makeText(this, "Hasil : " + namaDosen, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(this, "Hasil : " + namaDosen, Toast.LENGTH_SHORT).show();
 
         getdatKomentarDariMhs(true);
 
@@ -53,8 +53,8 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
 
     private void getdatKomentarDariMhs(boolean r) {
         loading = ProgressDialog.show(KomentarActivity.this, "", "Mengambil Data...", false, false);
-        if(r)    {
-            if(div.getChildCount() > 0)    div.removeAllViews();
+        if (r) {
+            if (div.getChildCount() > 0) div.removeAllViews();
         }
         ApiService apiService = Client.getInstanceRetrofit();
         Call<ArrayList<PolingSuaraModel>> call = apiService.getDataKomentarMhs();
@@ -71,10 +71,10 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
                             LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                             View addView = layoutInflater.inflate(R.layout.list_komentar_mhs, null);
 
-                            Toast.makeText(KomentarActivity.this, "Hasil : " + s.getSARAN(), Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(KomentarActivity.this, "Hasil : " + s.getSARAN(), Toast.LENGTH_SHORT).show();
 
                             final TextView tvListKomentarDari = (TextView) addView.findViewById(R.id.tvListKomentarDari);
-                            tvListKomentarDari.setText("Dari : " +s.getNPM());
+                            tvListKomentarDari.setText("Dari : " + s.getNPM());
 
                             final TextView tvKomentarSaran = (TextView) addView.findViewById(R.id.tvKomentarSaran);
                             tvKomentarSaran.setText(s.getSARAN());
@@ -103,6 +103,7 @@ public class KomentarActivity extends AppCompatActivity implements SwipeRefreshL
 
     private void initView() {
         div = (LinearLayout) findViewById(R.id.div);
+        sr = (SwipeRefreshLayout) findViewById(R.id.sr);
     }
 
     @Override

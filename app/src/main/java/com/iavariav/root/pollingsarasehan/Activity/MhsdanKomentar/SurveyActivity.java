@@ -1,4 +1,4 @@
-package com.iavariav.root.pollingsarasehan.Activity;
+package com.iavariav.root.pollingsarasehan.Activity.MhsdanKomentar;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -15,7 +15,6 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.iavariav.root.pollingsarasehan.Activity.MhsdanKomentar.KomentarActivity;
 import com.iavariav.root.pollingsarasehan.Helper.Config;
 import com.iavariav.root.pollingsarasehan.Model.KategoriDosenModel;
 import com.iavariav.root.pollingsarasehan.Model.SurveyModel;
@@ -145,7 +144,7 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                         public void onClick(View view) {
                             Bundle bundle = new Bundle();
                             bundle.putString(Config.BUNDLE_NAMA_DOSEN, tvSurveyNamaDosen.getText().toString().trim());
-                            Toast.makeText(SurveyActivity.this, "Bundle Send Activ : "+ bundle, Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(SurveyActivity.this, "Bundle Send Activ : "+ bundle, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), KomentarActivity.class);
                             intent.putExtras(bundle);
                             startActivity(intent);
