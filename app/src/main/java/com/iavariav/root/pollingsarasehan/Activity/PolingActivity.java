@@ -527,6 +527,12 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
     }
 
 //    @Override
+//    public void onBackPressed() {
+//        super.onBackPressed();
+//        divContainer.setVisibility(View.VISIBLE);
+//        getdata(true);
+//    }
+    //    @Override
 //    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
 //        isInternetOn();
 //        super.onSaveInstanceState(outState, outPersistentState);

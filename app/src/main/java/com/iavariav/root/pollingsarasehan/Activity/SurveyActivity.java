@@ -2,9 +2,11 @@ package com.iavariav.root.pollingsarasehan.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -13,6 +15,8 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.iavariav.root.pollingsarasehan.Activity.MhsdanKomentar.KomentarActivity;
+import com.iavariav.root.pollingsarasehan.Helper.Config;
 import com.iavariav.root.pollingsarasehan.Model.KategoriDosenModel;
 import com.iavariav.root.pollingsarasehan.Model.SurveyModel;
 import com.iavariav.root.pollingsarasehan.R;
@@ -70,6 +74,8 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                     LayoutInflater layoutInflater = (LayoutInflater) getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View addView = layoutInflater.inflate(R.layout.list_survey_dosen, null);
 
+                    final String nama_dosen = kategoriDosenModels.get(i).getNAMADOSEN();
+
                     final CircleImageView ciSurveyDosen = (CircleImageView) addView.findViewById(R.id.ciSurveyDosen);
                     Glide.with(getApplicationContext()).load(kategoriDosenModels.get(i).getFOTODOSEN())
                             .thumbnail(1f)
@@ -77,11 +83,10 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                             .error(R.drawable.errorman)
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .into(ciSurveyDosen);
-
+                    final CardView cvSurveyDetail = (CardView) addView.findViewById(R.id.cvSurveyDetail);
 
                     final TextView tvSurveyNamaDosen = (TextView) addView.findViewById(R.id.tvSurveyNamaDosen);
                     tvSurveyNamaDosen.setText(kategoriDosenModels.get(i).getNAMADOSEN());
-
 
                     final TextView tvRSurveySuaraDosen = (TextView) addView.findViewById(R.id.tvRSurveySuaraDosen);
 
@@ -134,6 +139,18 @@ public class SurveyActivity extends AppCompatActivity implements SwipeRefreshLay
                             }
                         }
                     }
+
+                    cvSurveyDetail.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            Bundle bundle = new Bundle();
+                            bundle.putString(Config.BUNDLE_NAMA_DOSEN, tvSurveyNamaDosen.getText().toString().trim());
+                            Toast.makeText(SurveyActivity.this, "Bundle Send Activ : "+ bundle, Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), KomentarActivity.class);
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        }
+                    });
 
 
 //                            final AlertDialog.Builder builder = new AlertDialog.Builder(PolingActivity.this);

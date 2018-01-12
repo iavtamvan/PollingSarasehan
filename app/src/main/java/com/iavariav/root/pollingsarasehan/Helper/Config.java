@@ -19,6 +19,10 @@ public final class Config {
     public static final String SHARED_NAMA = "shared nama";
     public static final String SHARED_HWID = "shared_hwid";
 
+    public static final String ERROR_MSG_MODEL_NULL = "Data Kosong";
+
+    public static final String BUNDLE_NAMA_DOSEN = "nama_dosen";
+
 
 
     public static void forceLogoutternak(Context context) {

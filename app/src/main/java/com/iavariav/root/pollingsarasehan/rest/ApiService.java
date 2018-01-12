@@ -1,6 +1,7 @@
 package com.iavariav.root.pollingsarasehan.rest;
 
 import com.iavariav.root.pollingsarasehan.Model.KategoriDosenModel;
+import com.iavariav.root.pollingsarasehan.Model.PolingSuaraModel;
 import com.iavariav.root.pollingsarasehan.Model.SurveyModel;
 import com.iavariav.root.pollingsarasehan.Model.UserModel;
 
@@ -24,6 +25,8 @@ public interface ApiService {
     Call<ArrayList<KategoriDosenModel>> getDataKategoriDosen();
     @GET("surveycoba.php")
     Call<ArrayList<SurveyModel>> getDataSurveyDosen();
+    @GET("polingdosenget.php")
+    Call<ArrayList<PolingSuaraModel>> getDataKomentarMhs();
 
     @FormUrlEncoded
     @POST("polingdosen.php")

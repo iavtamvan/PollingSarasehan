@@ -15,11 +15,25 @@
             android:layout_height="match_parent"
             android:layout_margin="10sp"
             android:orientation="vertical">
-            <ImageView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="130sp"
-                android:src="@drawable/semicolon"
-                android:layout_marginBottom="4sp"/>
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="130sp"
+                    android:src="@drawable/hm"
+                    android:layout_weight="1"
+                    android:layout_margin="4sp"/>
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="130sp"
+                    android:src="@drawable/semicolon"
+                    android:layout_weight="1"
+                    android:layout_margin="4sp"/>
+
+            </LinearLayout>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

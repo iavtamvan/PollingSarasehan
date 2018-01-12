@@ -102,6 +102,11 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.MyViewHolder> 
             ciFotoMahasiswa = (CircleImageView) itemView.findViewById(R.id.ciFotoMahasiswa);
 
 
+//            itemView.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                }
+//            });
         }
     }
 }

@@ -56,7 +56,10 @@
             android:label="Data Mahasiswa"
             android:parentActivityName=".Activity.HomeActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".Activity.MhsdanKomentar.KomentarActivity"></activity>
+        <activity android:name=".Activity.MhsdanKomentar.KomentarActivity"
+            android:label="Feedback"
+            android:parentActivityName=".Activity.SurveyActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -24,6 +25,8 @@ import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.telephony.TelephonyManager;
@@ -115,6 +118,7 @@ public class LoginActivity extends AppCompatActivity {
 
     PermissinCheker permissinCheker;
     private String h;
+    private int MY_PERMISSIONS_REQUEST_READ_EXTERNAL = 1;
     // Camera
 
 
@@ -133,7 +137,32 @@ public class LoginActivity extends AppCompatActivity {
         preview = (FrameLayout) findViewById(R.id.camera_preview);
         UserModels = new ArrayList<>();
         div = (LinearLayout)findViewById(R.id.div);
+// Here, thisActivity is the current activity
+        if (ContextCompat.checkSelfPermission(LoginActivity.this,
+                Manifest.permission.READ_EXTERNAL_STORAGE)
+                != PackageManager.PERMISSION_GRANTED) {
 
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(LoginActivity.this,
+                    Manifest.permission.READ_EXTERNAL_STORAGE)) {
+
+                // Show an expanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(LoginActivity.this,
+                        new String[]{Manifest.permission.READ_EXTERNAL_STORAGE},
+                        MY_PERMISSIONS_REQUEST_READ_EXTERNAL);
+
+                // MY_PERMISSIONS_REQUEST_READ_CONTACTS is an
+                // app-defined int constant. The callback method gets the
+                // result of the request.
+            }
+        }
 
         context = getApplicationContext();
 
@@ -494,15 +523,15 @@ public class LoginActivity extends AppCompatActivity {
 
                 Picasso.with(context).load(new File(imagePath)).into(imageVi);
                 h = new File(imagePath).getName();
-                Snackbar.make(parentView, "String Reselect", Snackbar.LENGTH_SHORT).show();
+                Snackbar.make(parentView, "Gambar terpilih", Snackbar.LENGTH_SHORT).show();
                 c.close();
 
                 te.setVisibility(View.GONE);
                 imageVi.setVisibility(View.VISIBLE);
             }else {
                 te.setVisibility(View.VISIBLE);
-                imageVi.setVisibility(View.GONE);
-                Snackbar.make(parentView, "unable to load Image", Snackbar.LENGTH_INDEFINITE).show();
+                imageVi.setVisibility(View.VISIBLE);
+                Snackbar.make(parentView, "Pilih gambar lagi", Snackbar.LENGTH_INDEFINITE).show();
             }
         }
     }
@@ -527,7 +556,7 @@ public class LoginActivity extends AppCompatActivity {
         ApiService api = Client.getInstanceRetrofit();
         api.postLogin(edtusername.getText().toString().trim(),
                 edtpassword.getText().toString().trim(),
-                "Informatika/ " +edtKelas.getText().toString().trim(), h)
+                "Informatika/ " +edtKelas.getText().toString().trim(), "wait")
                 .enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
