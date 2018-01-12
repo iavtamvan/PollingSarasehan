@@ -107,6 +107,11 @@
                     android:layout_height="1dp"
                     android:text="ini textView Gmabr"
                     android:id="@+id/textView"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Upload Foto Anda Di Bawah Ini"
+                    android:gravity="center"/>
 
                 <ImageView
                     android:layout_below="@+id/textView"

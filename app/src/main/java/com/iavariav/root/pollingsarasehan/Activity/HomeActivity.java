@@ -13,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,6 +58,7 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
     private CardView cvCekMahasiswa;
     private LinearLayout divCekMahasiswa;
     private CircleImageView ciCekMahasiswa;
+    private ImageView ivLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -153,11 +155,17 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
         fbSukses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+//                isInternetOn();
+                // Akan menampilkan poling
+            }
+        });
+        ivLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Snackbar.make(view, "Log Out", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
                 Config.forceLogoutternak(HomeActivity.this);
-//                isInternetOn();
-                // Akan menampilkan poling
             }
         });
     }
@@ -176,6 +184,7 @@ public class HomeActivity extends AppCompatActivity implements BaseSliderView.On
         cvCekMahasiswa = (CardView) findViewById(R.id.cvCekMahasiswa);
         divCekMahasiswa = (LinearLayout) findViewById(R.id.divCekMahasiswa);
         ciCekMahasiswa = (CircleImageView) findViewById(R.id.ciCekMahasiswa);
+        ivLogout = (ImageView) findViewById(R.id.ivLogout);
     }
 
     @Override

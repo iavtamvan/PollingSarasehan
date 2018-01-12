@@ -41,18 +41,29 @@
             android:layout_height="wrap_content"
             android:src="@drawable/man"
             android:layout_gravity="center"
-            android:layout_marginLeft="8sp"/>
+            android:layout_marginLeft="8sp"
+            android:layout_weight="1"/>
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="Namamu dan NPM"
-            android:gravity="left|center"
+            android:gravity="center"
             android:textSize="16sp"
             android:textColor="#FFF"
             android:id="@+id/tvNamadanNPM"
             android:drawableTint="#FFF"
             android:paddingLeft="20sp"
-            android:paddingRight="20sp"/>
+            android:paddingRight="20sp"
+            android:layout_weight="1"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logout"
+            android:layout_gravity="right|center"
+            android:layout_marginLeft="8sp"
+            android:layout_weight="1"
+            android:id="@+id/ivLogout"/>
+
     </LinearLayout>
 
     <com.daimajia.slider.library.SliderLayout
@@ -253,7 +264,8 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1.6"
-        android:gravity="bottom|right">
+        android:gravity="bottom|right"
+        android:visibility="gone">
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fbSukses"
             android:layout_width="match_parent"
