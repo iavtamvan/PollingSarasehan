@@ -69,7 +69,7 @@
     <com.daimajia.slider.library.SliderLayout
         android:id="@+id/sliderSlider"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="400sp"
         custom:auto_cycle="true"
         custom:indicator_visibility="visible"
         custom:pager_animation="Accordion"

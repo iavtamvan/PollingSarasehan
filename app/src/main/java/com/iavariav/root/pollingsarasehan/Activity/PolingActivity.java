@@ -528,6 +528,15 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
 
 //    @Override
 //    public void onBackPressed() {
+//        if (inflater.inflate(R.layout.dialog_komentar, null).isActivated()){
+//            Toast.makeText(this, "Aktif", Toast.LENGTH_SHORT).show();
+//        }else{
+//            super.onBackPressed();
+//            Toast.makeText(this, "Sudah ga aktif", Toast.LENGTH_SHORT).show();
+//        }
+//    }
+//    @Override
+//    public void onBackPressed() {
 //        super.onBackPressed();
 //        divContainer.setVisibility(View.VISIBLE);
 //        getdata(true);
