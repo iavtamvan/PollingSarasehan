@@ -260,9 +260,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
     // Code Camera
 //    Bitmap bitmap;
 //    private Camera.PictureCallback mPicture = new Camera.PictureCallback() {
