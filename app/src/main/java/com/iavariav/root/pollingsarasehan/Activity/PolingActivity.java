@@ -2,6 +2,7 @@ package com.iavariav.root.pollingsarasehan.Activity;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -13,6 +14,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -202,6 +204,14 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
                                 }
                             });
 
+
+                            builder.setCancelable(false);
+                            builder.setOnKeyListener(new DialogInterface.OnKeyListener() {
+                                @Override
+                                public boolean onKey(DialogInterface dialogInterface, int i, KeyEvent keyEvent) {
+                                    return false;
+                                }
+                            });
                             builder.setView(dialView);
                             builder.show();
 
@@ -526,15 +536,15 @@ public class PolingActivity extends AppCompatActivity implements SwipeRefreshLay
 
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        if (inflater.inflate(R.layout.dialog_komentar, null).isActivated()){
-//            Toast.makeText(this, "Aktif", Toast.LENGTH_SHORT).show();
-//        }else{
-//            super.onBackPressed();
-//            Toast.makeText(this, "Sudah ga aktif", Toast.LENGTH_SHORT).show();
-//        }
-//    }
+    @Override
+    public void onBackPressed() {
+        if (inflater.inflate(R.layout.dialog_komentar, null).isActivated()){
+            Toast.makeText(this, "Aktif", Toast.LENGTH_SHORT).show();
+        }else{
+            super.onBackPressed();
+            Toast.makeText(this, "Sudah ga aktif", Toast.LENGTH_SHORT).show();
+        }
+    }
 //    @Override
 //    public void onBackPressed() {
 //        super.onBackPressed();

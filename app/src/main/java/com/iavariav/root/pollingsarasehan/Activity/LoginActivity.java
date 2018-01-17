@@ -222,9 +222,9 @@ public class LoginActivity extends AppCompatActivity {
                 if (edtKelas.getText().toString().trim().isEmpty()){
                     edtKelas.setError("Isi Kelas");
                 }
-                if (TextUtils.isEmpty(h)){
-                    Toast.makeText(LoginActivity.this, "Pilih Foto Terlebih Dahulu", Toast.LENGTH_SHORT).show();
-                }
+//                if (TextUtils.isEmpty(h)){
+//                    Toast.makeText(LoginActivity.this, "Pilih Foto Terlebih Dahulu", Toast.LENGTH_SHORT).show();
+//                }
                 else {
                     posData();
                 }
@@ -568,7 +568,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 if (statusLogin.contains("Data tersimpan")){
                                     loading.dismiss();
-                                    uploadImage();
+//                                    uploadImage();
 
 
                                     Toast.makeText(LoginActivity.this, "Login Sukses" , Toast.LENGTH_SHORT).show();
