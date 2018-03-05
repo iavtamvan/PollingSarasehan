@@ -138,14 +138,15 @@ public class LoginActivity extends AppCompatActivity {
         UserModels = new ArrayList<>();
         div = (LinearLayout)findViewById(R.id.div);
 // Here, thisActivity is the current activity
+
         if (ContextCompat.checkSelfPermission(LoginActivity.this,
                 Manifest.permission.READ_EXTERNAL_STORAGE)
                 != PackageManager.PERMISSION_GRANTED) {
-
+            Toast.makeText(LoginActivity.this, "Otw Permisi", Toast.LENGTH_SHORT).show();
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(LoginActivity.this,
                     Manifest.permission.READ_EXTERNAL_STORAGE)) {
-
+                Toast.makeText(LoginActivity.this, "Permisi sukses", Toast.LENGTH_SHORT).show();
                 // Show an expanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
@@ -163,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                 // result of the request.
             }
         }
+
 
         context = getApplicationContext();
 
@@ -260,6 +262,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     // Code Camera
 //    Bitmap bitmap;
 //    private Camera.PictureCallback mPicture = new Camera.PictureCallback() {
@@ -426,7 +429,6 @@ public class LoginActivity extends AppCompatActivity {
 //        return dst;
 //    }
     // Code Camera
-
     private void uploadImage() {
 
 //        final ProgressDialog p  ;
